@@ -16,7 +16,6 @@ public class ListMapTest {
     ListMap<Integer, String> l = new ListMap<>();
 
 
-
     @Test
     public void put() {
         l.put(1, "eins");
@@ -26,10 +25,18 @@ public class ListMapTest {
 
         Assert.assertEquals(3, l.size());
 
+
     }
 
     @Test
     public void get() {
+        l.put(1, "eins");
+        l.put(1, "one");
+        l.put(11, "Price");
+        l.put(12, "Price");
+
+        Assert.assertEquals("one", l.get(1));
+        Assert.assertEquals(null, l.get(14));
     }
 
     @Test

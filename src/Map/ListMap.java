@@ -3,6 +3,7 @@ package Map;
 import java.net.CookieManager;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -10,29 +11,31 @@ public class ListMap<K, V> {
 
     private List<Entry<K, V>> l = new ArrayList<>();
 
+
     public void put(K key, V value) {
+
         Entry<K, V> en = new Entry<>(key, value);
 
-        boolean t = l.contains(en);
+        Entry<K, V> matchingObject = l.stream()
+                .filter(x -> x.getKey().equals(key))
+                .findAny().orElse(null);
 
-        if (l.contains(en)) {
-            l.stream()
-                    .filter((Entry e) -> e.getKey() == key)
-                    .limit(1)
-                    .collect(Collectors.toList()).get(0).setValue(value);
+        if (matchingObject == null) {
+            l.add(en);
         } else {
-            l.add(new Entry<>(key, value));
+            matchingObject.setValue(value);
         }
     }
 
     public V get(K key) {
-        if (l.contains(key)) {
-            return l.stream()
-                    .filter((Entry e) -> e.getKey() == key)
-                    .limit(1)
-                    .collect(Collectors.toList()).get(0).getValue();
-        } else {
+        Entry<K, V> matchingObject = l.stream()
+                .filter(x -> x.getKey().equals(key))
+                .findAny().orElse(null);
+
+        if (matchingObject == null) {
             return null;
+        } else {
+            return matchingObject.getValue();
         }
     }
 
@@ -44,19 +47,5 @@ public class ListMap<K, V> {
         return l.size();
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || o.getClass() != this.getClass()) {
-            return false;
-        } else {
-            return true;//this.getKey().equals((K) o);
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return 1;
-    }
 
 }

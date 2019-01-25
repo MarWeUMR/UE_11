@@ -29,6 +29,8 @@ public class Entry<K, V> {
         this.value = value;
     }
 
+
+
     @Override
     public String toString() {
         return String.format("Key: %s\tValue: %s", this.key, this.value);
@@ -36,11 +38,14 @@ public class Entry<K, V> {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || o.getClass() != this.getClass()) {
-            return false;
-        } else {
-            return this.getKey().equals((K) o);
+        boolean b = false;
+
+        if (o instanceof Entry) {
+            Entry e = (Entry) o;
+            b = e.getKey() == this.getKey();
         }
+
+        return b;
     }
 
     @Override

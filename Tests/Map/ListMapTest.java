@@ -41,5 +41,17 @@ public class ListMapTest {
 
     @Test
     public void remove() {
+
+        l.put(1, "one");
+        l.put(11, "Price");
+        l.put(12, "Price");
+
+        l.remove(1);
+
+        Assert.assertEquals(2, l.size());
+
+        l.remove(41);
+        Assert.assertEquals(2, l.size());
+
     }
 }

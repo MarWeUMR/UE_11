@@ -14,6 +14,7 @@ public class Lambdas {
         List<String> a = Stream.generate(new RandomStringGenerator())
                 .limit(10)
                 .collect(Collectors.toList());
+
         System.out.println("Pre-sorted: ");
         System.out.println(a);
 

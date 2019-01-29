@@ -29,28 +29,8 @@ public class Entry<K, V> {
         this.value = value;
     }
 
-
-
     @Override
     public String toString() {
         return String.format("Key: %s\tValue: %s", this.key, this.value);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        boolean b = false;
-
-        if (o instanceof Entry) {
-            Entry e = (Entry) o;
-            b = e.getKey() == this.getKey();
-        }
-
-        return b;
-    }
-
-    @Override
-    public int hashCode() {
-        return 1;
-    }
-
 }

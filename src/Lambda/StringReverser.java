@@ -2,8 +2,10 @@ package Lambda;
 
 import java.util.function.Consumer;
 
+/**
+ * Helper class for string reversal
+ */
 public class StringReverser implements Consumer<String> {
-
 
     @Override
     public void accept(String s) {

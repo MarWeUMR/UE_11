@@ -5,6 +5,9 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Helper class for random string generation
+ */
 public class RandomStringGenerator implements Supplier<String> {
 
     private Random rnd = new Random(System.currentTimeMillis());

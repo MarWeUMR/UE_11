@@ -12,7 +12,17 @@ public class ListMap<K, V> {
     private List<Entry<K, V>> l = new ArrayList<>();
 
 
+    /**
+     * Add or overwrite a new key value pair
+     *
+     * @param key
+     * @param value
+     */
     public void put(K key, V value) {
+
+        if (key == null) { // null check
+            throw new NullPointerException();
+        }
 
         Entry<K, V> en = new Entry<>(key, value);
 
@@ -27,7 +37,18 @@ public class ListMap<K, V> {
         }
     }
 
+    /**
+     * retrieve corresponding value for given key
+     *
+     * @param key
+     * @return value
+     */
     public V get(K key) {
+
+        if (key == null) { // null check
+            throw new NullPointerException();
+        }
+
         Entry<K, V> matchingObject = l.stream()
                 .filter(x -> x.getKey().equals(key))
                 .findAny().orElse(null);
@@ -39,10 +60,25 @@ public class ListMap<K, V> {
         }
     }
 
+    /**
+     * remove given key value pair from list is present
+     *
+     * @param key
+     */
     public void remove(K key) {
+
+        if (key == null) { // null check
+            throw new NullPointerException();
+        }
+
         l.removeIf(x -> x.getKey() == key);
     }
 
+    /**
+     * list size retrieval
+     *
+     * @return length of list
+     */
     public int size() {
         return l.size();
     }

@@ -15,6 +15,13 @@ public class Card implements Comparable {
     private Color color;
 
 
+    /**
+     * Constructor for a card object
+     *
+     * @param name
+     * @param year
+     * @param color
+     */
     public Card(String name, int year, Color color) {
         this.name = name;
         this.year = year;
@@ -22,21 +29,36 @@ public class Card implements Comparable {
     }
 
 
+    /**
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
 
+    /**
+     * @return year
+     */
     public int getYear() {
         return year;
     }
 
 
+    /**
+     * @return color
+     */
     public Color getColor() {
         return color;
     }
 
 
+    /**
+     * alternative for color value comparison
+     *
+     * @param color color string code
+     * @return color value
+     */
     private int getColorValue(String color) {
         int code = 0;
         switch (color) {
@@ -61,7 +83,7 @@ public class Card implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        if (o == null) {
+        if (o == null) { // null check
             throw new NullPointerException();
         }
 
